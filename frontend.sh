@@ -1,4 +1,4 @@
-!# /bin/bash
+#! /bin/bash
 
 # Install Nginx
 sudo dnf module disable nginx -y

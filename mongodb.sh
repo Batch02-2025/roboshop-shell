@@ -18,5 +18,5 @@ echo "Exit status: $?"
 
 echo "Update the Mongodb service"
 sudo systemctl restart mongod.service
-echo "Exit status: $"
+echo "Exit status: $?"
 

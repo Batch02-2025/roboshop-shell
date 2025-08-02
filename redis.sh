@@ -13,7 +13,7 @@ sudo dnf install redis -y
 echo "Exit status: $?"
 
 echo "Update Redis Listen address & protected mode"
-sudo sed -i -e '/^bind/ s/127.0.0.1/0.0.0.0/' -e '/protected-mode/ c protected-mode no/' /etc/redis/redis.conf
+sudo sed -i -e '/^bind/ s/127.0.0.1/0.0.0.0/' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf
 echo "Exit status: $?"
 
 echo "Start and Enable the Redis serivce"

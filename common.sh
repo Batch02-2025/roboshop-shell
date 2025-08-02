@@ -35,11 +35,11 @@ APP_SETUP() {
  echo "Exit status: $?"
 
  echo "Download the application code"
- sudo curl -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip
+ sudo curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component-v3.zip
  echo "Exit status: $?"
 
  echo "Extract the application code"
- sudo unzip /tmp/$app_name.zip -d /app
+ sudo unzip /tmp/$component.zip -d /app
  echo "Exit status: $?"
 
 }
@@ -47,7 +47,7 @@ APP_SETUP() {
 SYSTEMD_SETUP() {
 
  echo " Copy Service File"
- sudo cp $app_name.service /etc/systemd/system/$app_name.service
+ sudo cp $component.service /etc/systemd/system/$component.service
  echo "Exit status: $?"
 
  echo "Load the service"
@@ -55,9 +55,9 @@ SYSTEMD_SETUP() {
  echo "Exit status: $?"
 
  echo "Enable and Start the catalogue service"
- sudo systemctl enable $app_name
+ sudo systemctl enable $component
  echo "Exit status: $"
- sudo systemctl start $app_name
+ sudo systemctl start $component
  echo "Exit status: $"
 
 }

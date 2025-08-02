@@ -27,11 +27,17 @@ NODEJS() {
 APP_SETUP() {
 
  echo " Add an Application User"
- sudo useradd roboshop
+  id roboshop
+  if [ $? -ne 0 ]
+  then
+    sudo useradd roboshop
+  fi
  echo "Exit status: $?"
 
  echo " Create Application Directory"
- mkdir /app
+  if [ ! -d "/app" ];then
+    mkdir /app
+  fi
  echo "Exit status: $?"
 
  echo "Download the application code"
@@ -56,8 +62,8 @@ SYSTEMD_SETUP() {
 
  echo "Enable and Start the catalogue service"
  sudo systemctl enable $component
- echo "Exit status: $"
+ echo "Exit status: $?"
  sudo systemctl start $component
- echo "Exit status: $"
+ echo "Exit status: $?"
 
 }

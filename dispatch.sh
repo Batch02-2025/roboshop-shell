@@ -9,7 +9,8 @@ echo "Exit Status: $?"
 APP_SETUP
 
 echo " Install Dependencies"
-sudo go mod init dispatch --prefix /app
+cd /app
+sudo go mod init dispatch
 sudo go get
 sudo go build
 echo "Exit Status: $?"

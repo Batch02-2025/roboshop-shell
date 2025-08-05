@@ -67,3 +67,24 @@ SYSTEMD_SETUP() {
  echo "Exit status: $?"
 
 }
+
+JAVA() {
+  echo "Install Java"
+  sudo dnf install java-1.8.0-openjdk -y
+  echo "Exit Status: $?"
+
+  echo "Installing Maven"
+  sudo dnf install maven -y
+  echo "Exit Status: $?"
+
+  APP_SETUP
+
+  echo "Install Dependencies"
+  sudo mvn clean package --prefix /app
+  sudo mv target/shipping-1.0.jar shipping.jar
+  echo "Exit Status: $?"
+
+
+  SYSTEMD_SETUP
+
+}

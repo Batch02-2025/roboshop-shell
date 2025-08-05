@@ -9,7 +9,8 @@ echo "Exit Status: $?"
 APP_SETUP
 
 echo " Install Dependencies"
-sudo pip3 install -r requirements.txt --prefix /app
+cd /app
+sudo pip3 install -r requirements.txt
 echo "Exit Status: $?"
 
 SYSTEMD_SETUP

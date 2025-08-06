@@ -1,35 +1,35 @@
 #! /bin/bash
 
 echo "==== Disable Nginx Module ===="
-sudo dnf module disable nginx -y
+sudo dnf module disable nginx -y &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "=== Enable Nginx Module 1.24 ===="
-sudo dnf module enable nginx:1.24 -y
+sudo dnf module enable nginx:1.24 -y &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "===== Install Nginx ====="
-sudo dnf install nginx -y
+sudo dnf install nginx -y &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "===== Remove the default content that web server is serving ====="
-sudo rm -rf /usr/share/nginx/html/*
+sudo rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "===== Download the frontend content ====="
-sudo curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+sudo curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "===== Extract the frontend content ====="
-sudo unzip /tmp/frontend.zip -d /usr/share/nginx/html
+sudo unzip /tmp/frontend.zip -d /usr/share/nginx/html &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "===== Nginx Reverse Proxy Configuration ====="
-cp nginx.conf /etc/nginx/nginx.conf
+cp nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 echo "Exit status: $?"
 
 echo "===== Start and Enable Nginx Service ====="
-sudo systemctl enable nginx
+sudo systemctl enable nginx &>>$LOG_FILE
 echo "Exit status: $?"
-sudo systemctl start nginx
+sudo systemctl start nginx &>>$LOG_FILE
 echo "Exit status: $?"

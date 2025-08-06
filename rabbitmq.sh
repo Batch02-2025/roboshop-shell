@@ -1,4 +1,5 @@
 #!/bin/bash
+LOG_FILE=/tmp/roboshop.log
 
 echo " Copy Rabbitmq repo"
 sudo cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>$LOG_FILE

@@ -1,7 +1,7 @@
 #!/bin/bash
 LOG_FILE=/tmp/roboshop.log
 dir_path=$(pwd)
-
+rm -f /tmp/roboshop.log
 
 NODEJS() {
   echo "Disable Nodejs Module"
@@ -81,7 +81,8 @@ JAVA() {
   APP_SETUP
 
   echo "Install Dependencies"
-  sudo mvn clean package --prefix /app &>>$LOG_FILE
+  cd /app
+  sudo mvn clean package  &>>$LOG_FILE
   sudo mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
   echo "Exit Status: $?"
 

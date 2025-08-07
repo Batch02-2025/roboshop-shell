@@ -1,4 +1,6 @@
 #!/bin/bash
+LOG_FILE=/tmp/roboshop.log
+rm -f /tmp/roboshop.log
 
 echo "Install MySQL Server"
 sudo dnf install mysql-server -y &>>$LOG_FILE

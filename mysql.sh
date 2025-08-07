@@ -13,5 +13,5 @@ sudo systemctl start mysqld &>>$LOG_FILE
 echo "Exit Status: $?"
 
 echo "Steup Mysql Password"
-mysql_secure_installation --set-root-pass RoboShop@1 &>>$LOG_FILE
+sudo mysql_secure_installation --set-root-pass RoboShop@1 &>>$LOG_FILE
 echo "Exit Status: $?"
